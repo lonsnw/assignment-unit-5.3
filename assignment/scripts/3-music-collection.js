@@ -4,7 +4,6 @@ console.log('***** Music Collection *****')
 let myCollection = [];
 
 function addToCollection(collection, title, artist, yearPublished) {
-  let collection = [];
   let album = {
     title: title,
     artist: artist, 
@@ -14,11 +13,18 @@ function addToCollection(collection, title, artist, yearPublished) {
   return album;
 }
 
-
-
-
-
-
+addToCollection(myCollection, `Parklife`, `Blur`, `1994`);
+console.log(myCollection);
+addToCollection(myCollection, `13`, `Blur`, `1998`);
+console.log(myCollection);
+addToCollection(myCollection, `Gorillaz`, `Gorillaz`, `2001`);
+console.log(myCollection);
+addToCollection(myCollection, `Cracker Island`, `Gorillaz`, `2023`);
+console.log(myCollection);
+addToCollection(myCollection, `SR. SANTOS`, `Bad Bunny`, `2022`);
+console.log(myCollection);
+addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`);
+console.log(myCollection);
 
 
 
