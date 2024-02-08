@@ -35,6 +35,38 @@ function showCollection(collection) {
 
 showCollection(myCollection);
 
+function findByArtist(collection, artist) {
+  let artistMatch = [];
+  for (let i=0; i<collection.length; i++){
+    if (collection[i].artist === artist) {
+      artistMatch.push(collection[i]);
+    }
+  }
+  return artistMatch;
+}
+
+console.log(findByArtist(myCollection, `Bad Bunny`));
+console.log(findByArtist(myCollection, `J Balvin`));
+
+function search(collection, searchCriteria) {
+  let searchMatch = []; 
+  for (let i=0; i<collection.length; i++){
+    if (searchCriteria === ("artist: ", collection[i].artist, ", yearPublished: ", collection[i].yearPublished)) {
+      searchMatch.push(collection[i]);
+      console.log(searchMatch);
+    }
+    else if (searchCriteria != (collection[i].artist, collection[i].yearPublished)) {
+      console.log(collection);
+    }
+    else if (searchCriteria === "" || searchCriteria === collection[i].artist || searchCriteria === collection[i].yearPublished){
+      return collection;
+    }
+  }
+}
+
+search(myCollection, "artist: Blur, yearPublished: 1994");
+
+
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
