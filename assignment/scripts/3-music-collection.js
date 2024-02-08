@@ -26,6 +26,14 @@ console.log(myCollection);
 addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`);
 console.log(myCollection);
 
+function showCollection(collection) {
+  for (let i=0; i<collection.length; i++){
+    console.log(`${collection[i].title} by ${collection[i].artist}, published in ${collection[i].yearPublished}`);
+    // console.log(collection.title + ` by ` + collection.artist + `, published in ` + collection.yearPublished);
+  }
+}
+
+showCollection(myCollection);
 
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
