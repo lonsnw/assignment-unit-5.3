@@ -48,6 +48,8 @@ function findByArtist(collection, artist) {
 console.log(findByArtist(myCollection, `Bad Bunny`));
 console.log(findByArtist(myCollection, `J Balvin`));
 
+
+//was not able to figure this out
 function search(collection, searchCriteria) {
   let searchMatch = []; 
   for (let i=0; i<collection.length; i++){
