@@ -54,12 +54,12 @@ console.log(`looking for J Balvin:`, findByArtist(myCollection, `J Balvin`));
 function search(collection, searchCriteria) {
   let searchMatch = []; 
   for (let i=0; i<collection.length; i++){
-    if (searchCriteria === ("artist: ", collection[i].artist, ", yearPublished: ", collection[i].yearPublished)) {
+    if (searchCriteria === `{ artist: ${collection[i].artist}, yearPublished: ${collection[i].yearPublished} }`) {
       searchMatch.push(collection[i]);
-      console.log(searchMatch);
+      return searchMatch();
     }
     else if (searchCriteria != (collection[i].artist, collection[i].yearPublished)) {
-      console.log(collection);
+      return searchMatch();
     }
     else if (searchCriteria === "" || searchCriteria === collection[i].artist || searchCriteria === collection[i].yearPublished){
       return collection;
@@ -67,7 +67,7 @@ function search(collection, searchCriteria) {
   }
 }
 
-search(myCollection, "artist: Blur, yearPublished: 1994");
+search(myCollection, { artist: `Blur`, yearPublished: `1994` });
 
 
 
