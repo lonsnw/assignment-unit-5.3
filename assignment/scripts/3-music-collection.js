@@ -14,17 +14,18 @@ function addToCollection(collection, title, artist, yearPublished) {
 }
 
 addToCollection(myCollection, `Parklife`, `Blur`, `1994`);
-console.log(myCollection);
+console.log(myCollection[0]);
 addToCollection(myCollection, `13`, `Blur`, `1998`);
-console.log(myCollection);
+console.log(myCollection[1]);
 addToCollection(myCollection, `Gorillaz`, `Gorillaz`, `2001`);
-console.log(myCollection);
+console.log(myCollection[2]);
 addToCollection(myCollection, `Cracker Island`, `Gorillaz`, `2023`);
-console.log(myCollection);
-addToCollection(myCollection, `SR. SANTOS`, `Bad Bunny`, `2022`);
-console.log(myCollection);
+console.log(myCollection[3]);
+addToCollection(myCollection, `SR. SANTOS`, `Bad Bunny`, `2023`);
+//it's actually 2022 but i want overlap in years
+console.log(myCollection[4]);
 addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`);
-console.log(myCollection);
+console.log(myCollection[5]);
 
 function showCollection(collection) {
   for (let i=0; i<collection.length; i++){
