@@ -52,22 +52,29 @@ console.log(`looking for J Balvin:`, findByArtist(myCollection, `J Balvin`));
 
 //was not able to figure this out
 function search(collection, searchCriteria) {
-  let searchMatch = []; 
+  let searchResult = [];
   for (let i=0; i<collection.length; i++){
-    if (searchCriteria === `{ artist: ${collection[i].artist}, yearPublished: ${collection[i].yearPublished} }`) {
-      searchMatch.push(collection[i]);
-      return searchMatch();
+    console.log(searchCriteria);
+    console.log(collection[i].artist);
+    if (searchCriteria.artist === collection[i].artist && searchCriteria.yearPublished === collection[i].yearPublished){
+      searchResult.push(searchCriteria);
     }
-    else if (searchCriteria != (collection[i].artist, collection[i].yearPublished)) {
-      return searchMatch();
+    else if (searchCriteria.artist != collection[i].artist || searchCriteria.yearPublished != collection[i].yearPublished){
+      searchResult = collection;
     }
-    else if (searchCriteria === "" || searchCriteria === collection[i].artist || searchCriteria === collection[i].yearPublished){
-      return collection;
+    else if (searchCriteria.artist != collection[i].artist && searchCriteria.yearPublished != collection[i].yearPublished){
+      searchResult = [];
     }
-  }
+    else {
+      console.log(`whatever`);
+    }
+  };
+return searchResult;
 }
 
-search(myCollection, { artist: `Blur`, yearPublished: `1994` });
+console.log('should return object Blur, 1998:', search(myCollection, {artist: `Blur`, yearPublished: `1998`}));
+console.log('should return entire collection:', search(myCollection, { artist: `Blur`}));
+console.log('should return empty array:', search(myCollection, { artist: `Barbara Streisand`, yearPublished: `2018` }));
 
 
 
