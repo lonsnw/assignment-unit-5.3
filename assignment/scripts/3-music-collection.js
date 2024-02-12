@@ -46,8 +46,8 @@ function findByArtist(collection, artist) {
   return artistMatch;
 }
 
-console.log(findByArtist(myCollection, `Bad Bunny`));
-console.log(findByArtist(myCollection, `J Balvin`));
+console.log(`looking for Bad Bunny:`, findByArtist(myCollection, `Bad Bunny`));
+console.log(`looking for J Balvin:`, findByArtist(myCollection, `J Balvin`));
 
 
 //was not able to figure this out
