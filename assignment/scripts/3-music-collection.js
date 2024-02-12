@@ -54,27 +54,28 @@ console.log(`looking for J Balvin:`, findByArtist(myCollection, `J Balvin`));
 function search(collection, searchCriteria) {
   let searchResult = [];
   for (let i=0; i<collection.length; i++){
-    console.log(searchCriteria);
-    console.log(collection[i].artist);
+    //trying a ternary operator
+    // return (searchCriteria.artist === collection[i].artist && searchCriteria.yearPublished === collection[i].yearPublished) ? searchResult.push(collection[i])
+    //   : searchResult = []
+    //   ; searchResult = collection}
+    //original attempt with if else
+    //   console.log(searchCriteria);
     if (searchCriteria.artist === collection[i].artist && searchCriteria.yearPublished === collection[i].yearPublished){
-      searchResult.push(searchCriteria);
+      searchResult.push(collection[i]);
     }
     else if (searchCriteria.artist != collection[i].artist || searchCriteria.yearPublished != collection[i].yearPublished){
-      searchResult = collection;
-    }
-    else if (searchCriteria.artist != collection[i].artist && searchCriteria.yearPublished != collection[i].yearPublished){
       searchResult = [];
     }
-    else {
-      console.log(`whatever`);
+    else if (searchCriteria.artist === undefined || searchCriteria.yearPublished === undefined){
+      searchResult = collection;
     }
   };
-return searchResult;
+  return searchResult;
 }
 
 console.log('should return object Blur, 1998:', search(myCollection, {artist: `Blur`, yearPublished: `1998`}));
-console.log('should return entire collection:', search(myCollection, { artist: `Blur`}));
-console.log('should return empty array:', search(myCollection, { artist: `Barbara Streisand`, yearPublished: `2018` }));
+console.log('should return empty array:', search(myCollection, { artist: `Blur`}));
+console.log('should return entire collection:', search(myCollection, { artist: `Barbara Streisand`, yearPublished: `2018` }));
 
 
 
