@@ -129,21 +129,7 @@ console.log('should return empty array:', search(myCollection, { artist: `Blur`}
 console.log('should return entire collection:', search(myCollection, { artist: `Barbara Streisand`, yearPublished: `2018` }));
 
 //STRETCH GOAL #2
-//adding tracks to each album
-
-addToCollection(myCollection, `Parklife`, `Blur`, `1994`, );
-console.log(myCollection[0]);
-addToCollection(myCollection, `13`, `Blur`, `1998`);
-console.log(myCollection[1]);
-addToCollection(myCollection, `Gorillaz`, `Gorillaz`, `2001`);
-console.log(myCollection[2]);
-addToCollection(myCollection, `Cracker Island`, `Gorillaz`, `2023`);
-console.log(myCollection[3]);
-addToCollection(myCollection, `SR. SANTOS`, `Bad Bunny`, `2023`);
-//it's actually 2022 but i want overlap in years
-console.log(myCollection[4]);
-addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`);
-console.log(myCollection[5]);
+//adding tracks to each album; see above.  I did parts of it.
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
