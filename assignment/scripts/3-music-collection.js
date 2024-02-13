@@ -3,6 +3,15 @@ console.log('***** Music Collection *****')
 
 let myCollection = [];
 
+/**
+ * 
+ * @param {*} collection 
+ * @param {*} title 
+ * @param {*} artist 
+ * @param {*} yearPublished 
+ * @returns album object
+ */
+
 function addToCollection(collection, title, artist, yearPublished) {
   let album = {
     title: title,
@@ -27,6 +36,11 @@ console.log(myCollection[4]);
 addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`);
 console.log(myCollection[5]);
 
+/**
+ * 
+ * @param {*} collection 
+ */
+
 function showCollection(collection) {
   for (let i=0; i<collection.length; i++){
     console.log(`${collection[i].title} by ${collection[i].artist}, published in ${collection[i].yearPublished}`);
@@ -35,6 +49,13 @@ function showCollection(collection) {
 }
 
 showCollection(myCollection);
+
+/**
+ * 
+ * @param {*} collection 
+ * @param {*} artist 
+ * @returns Return the array with the matching results. (If no results are found, an empty array should be returned.)
+ */
 
 function findByArtist(collection, artist) {
   let artistMatch = [];
@@ -49,8 +70,18 @@ function findByArtist(collection, artist) {
 console.log(`looking for Bad Bunny:`, findByArtist(myCollection, `Bad Bunny`));
 console.log(`looking for J Balvin:`, findByArtist(myCollection, `J Balvin`));
 
-
+//STRETCH GOALS
 //was not able to figure this out
+/**
+ * 
+ * @param {*} collection 
+ * @param {*} searchCriteria 
+ * @returns Return a new array of all items in the collection matching all of the search criteria.
+    If no results are found, return an empty array.
+    If there is no search object, an empty search object, or missing artist/yearPublished data provided as input, 
+    return all albums from the collection being searched.
+ */
+
 function search(collection, searchCriteria) {
   let searchResult = [];
   for (let i=0; i<collection.length; i++){
@@ -59,15 +90,19 @@ function search(collection, searchCriteria) {
     //   : searchResult = []
     //   ; searchResult = collection}
     //original attempt with if else
-    //   console.log(searchCriteria);
-    if (searchCriteria.artist === collection[i].artist && searchCriteria.yearPublished === collection[i].yearPublished){
-      searchResult.push(collection[i]);
+    if (collection[i].artist === searchCriteria.artist && collection[i].yearPublished === searchCriteria.yearPublished){
+      searchResult.push(searchCriteria);
     }
-    else if (searchCriteria.artist != collection[i].artist || searchCriteria.yearPublished != collection[i].yearPublished){
+    else if (collection[i].artist != searchCriteria.artist || collection[i].yearPublished != searchCriteria.yearPublished){
       searchResult = [];
     }
     else if (searchCriteria.artist === undefined || searchCriteria.yearPublished === undefined){
-      searchResult = collection;
+      //trying to use a spread operator here to see if that's the issue; it's not.
+      //the spread operator copies the content of one object into another
+      //i'm not sure that's relevant here, as they're arrays
+      //but the reason to do it is to copy the content 
+      //instead of just creating a reference from the new object to the old one
+      searchResult = { ...collection};
     }
   };
   return searchResult;
@@ -76,6 +111,7 @@ function search(collection, searchCriteria) {
 console.log('should return object Blur, 1998:', search(myCollection, {artist: `Blur`, yearPublished: `1998`}));
 console.log('should return empty array:', search(myCollection, { artist: `Blur`}));
 console.log('should return entire collection:', search(myCollection, { artist: `Barbara Streisand`, yearPublished: `2018` }));
+
 
 
 
