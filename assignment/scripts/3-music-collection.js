@@ -12,29 +12,42 @@ let myCollection = [];
  * @returns album object
  */
 
-function addToCollection(collection, title, artist, yearPublished) {
+//this is what I originally wrote before the stretch goals
+// function addToCollection(collection, title, artist, yearPublished) {
+//   let album = {
+//     title: title,
+//     artist: artist, 
+//     yearPublished: yearPublished,
+//   };
+//   collection.push(album);
+//   return album;
+// }
+
+//for stretch goal #2
+function addToCollection(collection, title, artist, yearPublished, tracksAsObject) {
   let album = {
     title: title,
     artist: artist, 
     yearPublished: yearPublished,
+    tracks: tracksAsObject,
   };
   collection.push(album);
   return album;
 }
 
-addToCollection(myCollection, `Parklife`, `Blur`, `1994`);
-console.log(myCollection[0]);
-addToCollection(myCollection, `13`, `Blur`, `1998`);
-console.log(myCollection[1]);
-addToCollection(myCollection, `Gorillaz`, `Gorillaz`, `2001`);
-console.log(myCollection[2]);
-addToCollection(myCollection, `Cracker Island`, `Gorillaz`, `2023`);
-console.log(myCollection[3]);
-addToCollection(myCollection, `SR. SANTOS`, `Bad Bunny`, `2023`);
-//it's actually 2022 but i want overlap in years
-console.log(myCollection[4]);
-addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`);
-console.log(myCollection[5]);
+addToCollection(myCollection, `Parklife`, `Blur`, `1994`, [{song: 'End of a Century', duration: `2:46`}, {song: `Parklife`, duration: `3:06`}, {song: `Bank Holiday`, duration: `1:42`}]);
+//i went with song instead of name because name is deprecated
+console.log(`Album 1:`, myCollection[0]);
+addToCollection(myCollection, `13`, `Blur`, `1998`, [{song: 'Tender', duration: `7:41`}, {song: `Coffee & TV`, duration: `5:59`}, {song: `1992`, duration: `5:29`}]);
+console.log(`Album 2:`, myCollection[1]);
+addToCollection(myCollection, `Gorillaz`, `Gorillaz`, `2001`, [{song: '5/4', duration: `2:42`}, {song: `Clint Eastwood`, duration: `5:41`}, {song: `Slow Country`, duration: `3:37`}]);
+console.log(`Album 3:`, myCollection[2]);
+addToCollection(myCollection, `Cracker Island`, `Gorillaz`, `2023`, [{song: 'Cracker Island', duration: `3:33`}, {song: `Tarantula`, duration: `3:31`}, {song: `Tormenta`, duration: `3:13`}]);
+console.log(`Album 4:`, myCollection[3]);
+addToCollection(myCollection, `Nadie Sabe Lo Que Va a Pasar Mañana`, `Bad Bunny`, `2023`, [{song: 'NADIE SABE', duration: `6:20`}, {song: `HIBIKI`, duration: `3:28`}, {song: `CYBERTRUCK`, duration: `3:12`}]);
+console.log(`Album 5:`, myCollection[4]);
+addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`, [{song: 'Yo Visto Así', duration: `3:12`}, {song: `TE MUDASTE`, duration: `2:10`}, {song: `Dákiti`, duration: `3:25`}]);
+console.log(`Album 6:`, myCollection[5]);
 
 /**
  * 
@@ -43,8 +56,11 @@ console.log(myCollection[5]);
 
 function showCollection(collection) {
   for (let i=0; i<collection.length; i++){
-    console.log(`${collection[i].title} by ${collection[i].artist}, published in ${collection[i].yearPublished}`);
-    // console.log(collection.title + ` by ` + collection.artist + `, published in ` + collection.yearPublished);
+    console.log(`${collection[i].title} by ${collection[i].artist}, published in ${collection[i].yearPublished}:`);
+    for (let n=0; n<collection[i].tracks.length; n++){
+      console.log(`${n+1}. ${collection[i].tracks[n].song}: ${collection[i].tracks[n].duration}`)
+    }
+//idk how to format this nicer?
   }
 }
 
@@ -112,8 +128,22 @@ console.log('should return object Blur, 1998:', search(myCollection, {artist: `B
 console.log('should return empty array:', search(myCollection, { artist: `Blur`}));
 console.log('should return entire collection:', search(myCollection, { artist: `Barbara Streisand`, yearPublished: `2018` }));
 
+//STRETCH GOAL #2
+//adding tracks to each album
 
-
+addToCollection(myCollection, `Parklife`, `Blur`, `1994`, );
+console.log(myCollection[0]);
+addToCollection(myCollection, `13`, `Blur`, `1998`);
+console.log(myCollection[1]);
+addToCollection(myCollection, `Gorillaz`, `Gorillaz`, `2001`);
+console.log(myCollection[2]);
+addToCollection(myCollection, `Cracker Island`, `Gorillaz`, `2023`);
+console.log(myCollection[3]);
+addToCollection(myCollection, `SR. SANTOS`, `Bad Bunny`, `2023`);
+//it's actually 2022 but i want overlap in years
+console.log(myCollection[4]);
+addToCollection(myCollection, `EL ÚLTIMO TOUR DEL MUNDO`, `Bad Bunny`, `2020`);
+console.log(myCollection[5]);
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
