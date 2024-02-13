@@ -54,6 +54,15 @@ console.log(`Album 6:`, myCollection[5]);
  * @param {*} collection 
  */
 
+//this is what I originally wrote before the stretch goals
+// function showCollection(collection) {
+//   for (let i=0; i<collection.length; i++){
+//     console.log(`${collection[i].title} by ${collection[i].artist}, published in ${collection[i].yearPublished}`);
+//     // console.log(collection.title + ` by ` + collection.artist + `, published in ` + collection.yearPublished);
+//   }
+// }
+
+//for stretch goal #2
 function showCollection(collection) {
   for (let i=0; i<collection.length; i++){
     console.log(`${collection[i].title} by ${collection[i].artist}, published in ${collection[i].yearPublished}:`);
