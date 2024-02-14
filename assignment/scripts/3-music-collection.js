@@ -107,35 +107,54 @@ console.log(`looking for J Balvin:`, findByArtist(myCollection, `J Balvin`));
     return all albums from the collection being searched.
  */
 
+// function search(collection, searchCriteria) {
+//   let searchResult = [];
+//   for (let i=0; i<collection.length; i++){
+//     //trying a ternary operator
+//     // return (searchCriteria.artist === collection[i].artist && searchCriteria.yearPublished === collection[i].yearPublished) ? searchResult.push(collection[i])
+//     //   : searchResult = []
+//     //   ; searchResult = collection}
+//     //original attempt with if else
+//     if (collection[i].artist === searchCriteria.artist && collection[i].yearPublished === searchCriteria.yearPublished){
+//       searchResult.push(searchCriteria);
+//     }
+//     else if (collection[i].artist !== searchCriteria.artist || collection[i].yearPublished !== searchCriteria.yearPublished){
+//       searchResult = [];
+//     }
+//     else if (searchCriteria.artist === undefined || searchCriteria.yearPublished === undefined){
+//       //trying to use a spread operator here to see if that's the issue; it's not.
+//       //the spread operator copies the content of one object into another
+//       //i'm not sure that's relevant here, as they're arrays
+//       //but the reason to do it is to copy the content 
+//       //instead of just creating a reference from the new object to the old one
+//       searchResult = { ...collection};
+//     }
+//   };
+//   return searchResult;
+// }
+
 function search(collection, searchCriteria) {
   let searchResult = [];
+  console.log(collection);
   for (let i=0; i<collection.length; i++){
-    //trying a ternary operator
-    // return (searchCriteria.artist === collection[i].artist && searchCriteria.yearPublished === collection[i].yearPublished) ? searchResult.push(collection[i])
-    //   : searchResult = []
-    //   ; searchResult = collection}
-    //original attempt with if else
-    if (collection[i].artist === searchCriteria.artist && collection[i].yearPublished === searchCriteria.yearPublished){
+    if (searchCriteria.artist === collection[i].artist && searchCriteria.yearPublished === collection[i].yearPublished){
       searchResult.push(searchCriteria);
-    }
-    else if (collection[i].artist != searchCriteria.artist || collection[i].yearPublished != searchCriteria.yearPublished){
+    } //this part seems to work
+    else if (searchCriteria.artist != collection[i].artist && searchCriteria.yearPublished != collection[i].yearPublished){
       searchResult = [];
-    }
-    else if (searchCriteria.artist === undefined || searchCriteria.yearPublished === undefined){
-      //trying to use a spread operator here to see if that's the issue; it's not.
-      //the spread operator copies the content of one object into another
-      //i'm not sure that's relevant here, as they're arrays
-      //but the reason to do it is to copy the content 
-      //instead of just creating a reference from the new object to the old one
-      searchResult = { ...collection};
+    } //if i switch from && to || in this condition, the first condition starts to fail; i don't understand why.
+    else {
+      searchResult = collection;
     }
   };
   return searchResult;
 }
 
 console.log('should return object Blur, 1998:', search(myCollection, {artist: `Blur`, yearPublished: `1998`}));
-console.log('should return empty array:', search(myCollection, { artist: `Blur`}));
-console.log('should return entire collection:', search(myCollection, { artist: `Barbara Streisand`, yearPublished: `2018` }));
+//why does this add the searchCriteria to myCollection?
+console.log(myCollection);
+console.log('should return empty array:', search(myCollection, { artist: `Blur`, yearPublished: `2015`}));
+console.log('should return entire collection:', search(myCollection, { artist: `Barbara Streisand`}));
 
 //STRETCH GOAL #2
 //adding tracks to each album; see above.  I did parts of it.
